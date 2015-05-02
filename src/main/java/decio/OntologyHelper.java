@@ -55,8 +55,6 @@ public class OntologyHelper {
 						if(gamb.charAt(gamb.length()-1) == '>')
 							gamb = gamb.substring(0, gamb.length()-1).toLowerCase();
 						
-						String x = OntologyHelper.getClassName(owlClass).toLowerCase();
-						
 						if(gamb.equals(OntologyHelper.getClassName(owlClass).toLowerCase())){
 							classes.add(owlClass);
 							break;
@@ -85,6 +83,9 @@ public class OntologyHelper {
 					for (OWLClass owlClass : type) {
 						String gamb = aux[i].split("#")[1];
 						gamb = gamb.substring(0, gamb.length()-1).toLowerCase();
+						
+						if(gamb.charAt(gamb.length()-1) == '>')
+							gamb = gamb.substring(0, gamb.length()-1).toLowerCase();
 						
 						if(gamb.equals(OntologyHelper.getClassName(owlClass).toLowerCase())){
 							classes.add(owlClass);
