@@ -37,13 +37,7 @@
         <Class IRI="#FalaErrado"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Femea"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Humano"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Inocente"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Mau"/>
@@ -124,27 +118,6 @@
     </DisjointClasses>
     <ClassAssertion>
         <ObjectIntersectionOf>
-            <Class IRI="#Animal"/>
-            <Class IRI="#Mau"/>
-            <Class IRI="#UsaArmas"/>
-            <ObjectComplementOf>
-                <Class IRI="#Esperto"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Coyote"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
-            <Class IRI="#Animal"/>
-            <Class IRI="#Veloz"/>
-            <ObjectComplementOf>
-                <Class IRI="#Esperto"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Diabo_da_Tasmânia"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
             <Class IRI="#Humano"/>
             <Class IRI="#Mau"/>
             <Class IRI="#Ruivo"/>
@@ -163,16 +136,6 @@
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
-            <Class IRI="#Animal"/>
-            <Class IRI="#FalaErrado"/>
-            <ObjectComplementOf>
-                <Class IRI="#Mau"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Gaguinho"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
             <Class IRI="#FalaErrado"/>
             <Class IRI="#Humano"/>
             <ObjectComplementOf>
@@ -183,16 +146,6 @@
             </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Hortelino"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
-            <Class IRI="#Animal"/>
-            <Class IRI="#Femea"/>
-            <ObjectComplementOf>
-                <Class IRI="#Mau"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Lola_Bunny"/>
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
@@ -217,18 +170,6 @@
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
-            <ObjectComplementOf>
-                <Class IRI="#Femea"/>
-            </ObjectComplementOf>
-            <ObjectComplementOf>
-                <Class IRI="#Mau"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Pepe_le_Pew"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
-            <Class IRI="#Animal"/>
             <Class IRI="#Esperto"/>
             <ObjectComplementOf>
                 <Class IRI="#Azarado"/>
@@ -238,27 +179,6 @@
             </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Pernalonga"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
-            <Class IRI="#Animal"/>
-            <Class IRI="#Esperto"/>
-            <Class IRI="#TemPenas"/>
-            <ObjectComplementOf>
-                <Class IRI="#Mau"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Piu-Piu"/>
-    </ClassAssertion>
-    <ClassAssertion>
-        <ObjectIntersectionOf>
-            <Class IRI="#Femea"/>
-            <Class IRI="#Humano"/>
-            <ObjectComplementOf>
-                <Class IRI="#Mau"/>
-            </ObjectComplementOf>
-        </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Vovó"/>
     </ClassAssertion>
 </Ontology>
 
