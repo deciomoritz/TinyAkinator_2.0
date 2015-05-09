@@ -51,11 +51,10 @@ public class SpeakingInterface {
 				break;
 			}
 		}
-
-		tryToGuess();
-		try{
+		tryOne();
+		try {
 			learn();
-		}catch(Exception e){
+		} catch (Exception e) {
 			say("Não entendi!");
 			startConversation();
 		}
@@ -64,15 +63,33 @@ public class SpeakingInterface {
 		if (hear().equals("sim"))
 			startConversation();
 	}
-	
-	private void learn(){
+
+	private void learn() {
 		reasoner.learn(name, characteristic);
 	}
 
-	private void tryToGuess() {
+	private void tryOne() {
+		if (reasoner.winner() != null) {
+			say("Eu acho que é: " + reasoner.winner().getName());
+			say("Acertei?");
+
+			if (hear().equals("sim")) {
+				say("Que chato, sempre ganho. Quer jogar de novo?");
+				if (hear().equals("sim"))
+					startConversation();
+				else{
+					say("Tchau!");
+					System.exit(0);
+				}
+			}
+		}
+		tryAgain();
+	}
+
+	private void tryAgain() {
 		int num_attempts = 0;
 		reasoner.popWinner();
-		while (reasoner.winner() != null && MAX_ATTEMPTS <= num_attempts) {
+		while (reasoner.winner() != null && MAX_ATTEMPTS >= num_attempts) {
 			say("Eu acho que é: " + reasoner.winner().getName());
 			say("Acertei?");
 
@@ -82,7 +99,7 @@ public class SpeakingInterface {
 					startConversation();
 				else
 					say("Tchau!");
-			} 
+			}
 			reasoner.popWinner();
 			num_attempts++;
 		}
