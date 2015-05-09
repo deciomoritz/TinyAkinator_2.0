@@ -9,7 +9,9 @@ import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLEntity;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyFormat;
@@ -120,6 +122,14 @@ public class OntologyReasoner {
 	}
 
 	public void learn(String name, String characteristic) {
+		char c[] = name.trim().toCharArray();
+		c[0] = Character.toUpperCase(c[0]);
+		name = new String(c);
+		
+		c = characteristic.trim().toCharArray();
+		c[0] = Character.toUpperCase(c[0]);
+		characteristic = new String(c);
+		
 		IRI ontologyIRI = Main.Ontology.getOntologyID().getOntologyIRI();
 		OWLOntology ont = Main.Ontology;
 		OWLDataFactory factory = OntologyHelper.manager.getOWLDataFactory();
@@ -129,10 +139,24 @@ public class OntologyReasoner {
 
 		OWLClass owlClass = factory.getOWLClass(IRI.create(ontologyIRI + "#"
 				+ characteristic));
+		
+		OWLAxiom axiom1 = factory.getOWLDeclarationAxiom(owlClass);
 
 		OWLAxiom axiom = factory.getOWLClassAssertionAxiom(owlClass, newIndividual);
 
+		OntologyHelper.manager.addAxiom(ont, axiom1);
 		OntologyHelper.manager.addAxiom(ont, axiom);
+		
+		for (OWLClass positiveAnswer : positiveAnswers) {
+			OWLAxiom axi = factory.getOWLClassAssertionAxiom(positiveAnswer, newIndividual);
+			OntologyHelper.manager.addAxiom(ont, axi);
+		}
+		
+		for (OWLClass negativeAnswer : negativeAnswers) {
+			OWLClassExpression exp = negativeAnswer.getObjectComplementOf();
+			OWLAxiom axi = factory.getOWLClassAssertionAxiom(exp, newIndividual);
+			OntologyHelper.manager.addAxiom(ont, axi);
+		}
 		
 		try {
 			OntologyHelper.manager.saveOntology(ont);

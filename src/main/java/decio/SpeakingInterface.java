@@ -53,7 +53,16 @@ public class SpeakingInterface {
 		}
 
 		tryToGuess();
-		learn();
+		try{
+			learn();
+		}catch(Exception e){
+			say("Não entendi!");
+			startConversation();
+		}
+		say("Pronto, agora já sei");
+		say("Quer jogar de novo?");
+		if (hear().equals("sim"))
+			startConversation();
 	}
 	
 	private void learn(){
