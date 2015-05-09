@@ -7,7 +7,12 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 public class SpeakingInterface {
 
-	OntologyReasoner reasoner;
+	private OntologyReasoner reasoner;
+
+	private String name = "";
+	private String characteristic = "";
+
+	private static int MAX_ATTEMPTS = 3;
 
 	public SpeakingInterface() throws OWLOntologyCreationException {
 		startConversation();
@@ -46,19 +51,37 @@ public class SpeakingInterface {
 				break;
 			}
 		}
-		say("Eu acho que é: " + reasoner.winner().getName());
-		say("Acertei?");
 
-		String name = "";
-		String caracteristic = "";
-		if (hear().equals("sim"))
-			say("Que chato, sempre ganho.");
-		else {
-			say("Hmm... Qual o nome do seu personagem?");
-			name = hear();
-			say("E qual sua característica marcante?");
-			caracteristic = hear();
+		tryToGuess();
+		learn();
+	}
+	
+	private void learn(){
+		reasoner.learn(name, characteristic);
+	}
+
+	private void tryToGuess() {
+		int num_attempts = 0;
+		reasoner.popWinner();
+		while (reasoner.winner() != null && MAX_ATTEMPTS <= num_attempts) {
+			say("Eu acho que é: " + reasoner.winner().getName());
+			say("Acertei?");
+
+			if (hear().equals("sim")) {
+				say("Que chato, sempre ganho. Quer jogar de novo?");
+				if (hear().equals("sim"))
+					startConversation();
+				else
+					say("Tchau!");
+			} 
+			reasoner.popWinner();
+			num_attempts++;
 		}
+		say("Agora você me complicou, não sei mesmo.");
+		say("Hmm... Qual o nome do seu personagem?");
+		name = hear();
+		say("E qual sua característica marcante?");
+		characteristic = hear();
 	}
 
 	private void handleFirstQuestion(String s) {
@@ -70,16 +93,10 @@ public class SpeakingInterface {
 
 		if (owlClass.toString().toLowerCase().contains("animal")) {
 			reasoner.positiveAnswer(OntologyHelper.getOWLClass("animal"));
-			reasoner.negativeAnswer(OntologyHelper.getOWLClass("humano"));
-			reasoner.negativeAnswer(OntologyHelper.getOWLClass("alienígena"));
 		} else if (owlClass.toString().toLowerCase().contains("humano")) {
 			reasoner.positiveAnswer(OntologyHelper.getOWLClass("humano"));
-			reasoner.negativeAnswer(OntologyHelper.getOWLClass("animal"));
-			reasoner.negativeAnswer(OntologyHelper.getOWLClass("alienígena"));
 		} else if (owlClass.toString().toLowerCase().contains("alienígena")) {
 			reasoner.positiveAnswer(OntologyHelper.getOWLClass("alienígena"));
-			reasoner.negativeAnswer(OntologyHelper.getOWLClass("humano"));
-			reasoner.negativeAnswer(OntologyHelper.getOWLClass("animal"));
 		} else {
 			fail();
 		}
@@ -98,9 +115,9 @@ public class SpeakingInterface {
 		System.out.println(s);
 	}
 
+	@SuppressWarnings("resource")
 	public String hear() {
-		Scanner s = new Scanner(System.in);
-		return s.nextLine();
+		return new Scanner(System.in).nextLine();
 	}
 
 }

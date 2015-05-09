@@ -7,6 +7,8 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
+import rationals.converters.ToString;
+
 public class Candidate {
 
 	private HashSet<OWLClass> classes;
@@ -46,5 +48,10 @@ public class Candidate {
 	
 	public HashSet<OWLClass> getCClasses(){
 		return cClasses;
+	}
+	
+	@Override
+	public String toString(){
+		return OntologyHelper.getIndividualName(me);
 	}
 }

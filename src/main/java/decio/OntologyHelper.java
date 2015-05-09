@@ -9,6 +9,7 @@ import java.util.Set;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
@@ -116,6 +117,13 @@ public class OntologyHelper {
 			e.printStackTrace();
 		}
 		return ontology.getClassesInSignature();
+	}
+	
+	public static Set<OWLClass> getDisjointClassesOf(OWLClass owlClass){
+		Set<OWLClass> disjointClasses = new HashSet<>();
+		for (OWLClassExpression owlClassExpression : owlClass.getDisjointClasses(Main.Ontology)) 
+			disjointClasses.add(owlClassExpression.asOWLClass());
+		return disjointClasses;
 	}
 	
 	public static String getClassName(OWLClass owlClass){

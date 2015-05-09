@@ -1,10 +1,6 @@
 package decio;
 
-import java.util.Set;
-
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
@@ -19,19 +15,14 @@ public class Main {
 		OntologyPath = args[0];
 		
 		Ontology = OntologyHelper.load(OntologyPath);
+		IRI iri = Ontology.getOntologyID().getOntologyIRI();
 		
 //		for (OWLClass c : OntologyHelper.getAllClasses(OntologyPath)) {
-//			System.out.println(OntologyHelper.getClassName(c));
-//			
-//			OWLReasoner r = new Reasoner.ReasonerFactory().createReasoner(ontology);
-//			
-//			Set<OWLClass> subClasses = r.getSubClasses(c, false).getFlattened();
-//			if(subClasses.size() > 1){
-//				for (OWLClass owlClass : subClasses) {
-//					System.out.println(OntologyHelper.getClassName(owlClass));
-//				}
+//			System.out.println("Eu sou " + OntologyHelper.getClassName(c));
+//			for (OWLClass cl : OntologyHelper.getDisjointClassesOf(c)) {
+//				System.out.println(OntologyHelper.getClassName(cl));
 //			}
-//			System.out.println("\n");
+//			
 //		}
 		
 		new SpeakingInterface();
