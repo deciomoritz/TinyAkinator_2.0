@@ -31,6 +31,9 @@
         <Class IRI="#Azarado"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Caçador"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Esperto"/>
     </Declaration>
     <Declaration>
@@ -40,19 +43,37 @@
         <Class IRI="#Femea"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Frango"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gato"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Humano"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Inocente"/>
+        <Class IRI="#Ingênuo"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Mau"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Medroso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Mulherengo"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rato"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Ruivo"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TemBico"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TemIrmão"/>
     </Declaration>
     <Declaration>
         <Class IRI="#TemPenas"/>
@@ -67,6 +88,9 @@
         <Class IRI="#Veloz"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Cerebro"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Coyote"/>
     </Declaration>
     <Declaration>
@@ -79,16 +103,28 @@
         <NamedIndividual IRI="#Frajola"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Frangolino"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Gaguinho"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Hortelino"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Ligeirinho"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Lola_Bunny"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Marvin"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Papaleguas"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Passaro_marciano"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Patolino"/>
@@ -100,18 +136,40 @@
         <NamedIndividual IRI="#Pernalonga"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Pink"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Piu-Piu"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Sam"/>
     </Declaration>
     <Declaration>
         <NamedIndividual IRI="#Vovó"/>
     </Declaration>
+    <SubClassOf>
+        <Class IRI="#Caçador"/>
+        <Class IRI="#Mau"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Frango"/>
+        <Class IRI="#TemPenas"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gato"/>
+        <Class IRI="#Animal"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rato"/>
+        <Class IRI="#Animal"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#TemPenas"/>
         <Class IRI="#Animal"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#UsaArmas"/>
-        <Class IRI="#Mau"/>
+        <Class IRI="#Caçador"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#UsaCapacete"/>
@@ -122,14 +180,43 @@
         <Class IRI="#Animal"/>
         <Class IRI="#Humano"/>
     </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Gato"/>
+        <Class IRI="#Rato"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Gato"/>
+        <Class IRI="#TemBico"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Gato"/>
+        <Class IRI="#TemPenas"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Rato"/>
+        <Class IRI="#TemBico"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Rato"/>
+        <Class IRI="#TemPenas"/>
+    </DisjointClasses>
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
+            <Class IRI="#Esperto"/>
+            <Class IRI="#Mau"/>
+            <Class IRI="#Rato"/>
+            <Class IRI="#TemIrmão"/>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Cerebro"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
+            <Class IRI="#Azarado"/>
+            <Class IRI="#Esperto"/>
             <Class IRI="#Mau"/>
             <Class IRI="#UsaArmas"/>
-            <ObjectComplementOf>
-                <Class IRI="#Esperto"/>
-            </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Coyote"/>
     </ClassAssertion>
@@ -156,15 +243,30 @@
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
             <Class IRI="#Azarado"/>
-            <Class IRI="#FalaErrado"/>
-            <Class IRI="#TemPenas"/>
+            <Class IRI="#Gato"/>
+            <Class IRI="#Medroso"/>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Frajola"/>
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
+            <Class IRI="#Azarado"/>
+            <Class IRI="#Frango"/>
+            <Class IRI="#TemBico"/>
+            <Class IRI="#TemPenas"/>
+            <ObjectComplementOf>
+                <Class IRI="#Mau"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Frangolino"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
             <Class IRI="#FalaErrado"/>
+            <Class IRI="#Ingênuo"/>
+            <Class IRI="#Medroso"/>
             <ObjectComplementOf>
                 <Class IRI="#Mau"/>
             </ObjectComplementOf>
@@ -173,16 +275,31 @@
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
+            <Class IRI="#Caçador"/>
             <Class IRI="#FalaErrado"/>
             <Class IRI="#Humano"/>
+            <Class IRI="#Mau"/>
+            <Class IRI="#UsaArmas"/>
             <ObjectComplementOf>
                 <Class IRI="#Esperto"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Hortelino"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
+            <Class IRI="#Ingênuo"/>
+            <Class IRI="#Rato"/>
+            <Class IRI="#Veloz"/>
+            <ObjectComplementOf>
+                <Class IRI="#Azarado"/>
             </ObjectComplementOf>
             <ObjectComplementOf>
                 <Class IRI="#Mau"/>
             </ObjectComplementOf>
         </ObjectIntersectionOf>
-        <NamedIndividual IRI="#Hortelino"/>
+        <NamedIndividual IRI="#Ligeirinho"/>
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
@@ -206,6 +323,30 @@
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
+            <Class IRI="#Esperto"/>
+            <Class IRI="#TemBico"/>
+            <Class IRI="#TemPenas"/>
+            <Class IRI="#Veloz"/>
+            <ObjectComplementOf>
+                <Class IRI="#Azarado"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="#Mau"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Papaleguas"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Alienígena"/>
+            <Class IRI="#Mau"/>
+            <Class IRI="#TemBico"/>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Passaro_marciano"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
             <Class IRI="#Azarado"/>
             <Class IRI="#TemPenas"/>
             <ObjectComplementOf>
@@ -217,6 +358,7 @@
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
+            <Class IRI="#Mulherengo"/>
             <ObjectComplementOf>
                 <Class IRI="#Femea"/>
             </ObjectComplementOf>
@@ -242,13 +384,43 @@
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
+            <Class IRI="#Rato"/>
+            <Class IRI="#TemIrmão"/>
+            <ObjectComplementOf>
+                <Class IRI="#Esperto"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="#Mau"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Pink"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
             <Class IRI="#Esperto"/>
+            <Class IRI="#TemBico"/>
             <Class IRI="#TemPenas"/>
             <ObjectComplementOf>
                 <Class IRI="#Mau"/>
             </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Piu-Piu"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
+            <Class IRI="#Esperto"/>
+            <Class IRI="#Ruivo"/>
+            <Class IRI="#Veloz"/>
+            <ObjectComplementOf>
+                <Class IRI="#Azarado"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="#Femea"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Sam"/>
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
