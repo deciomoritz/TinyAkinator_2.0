@@ -18,8 +18,14 @@ import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 public class OntologyHelper {
 	
+	public static OWLOntologyManager manager;
+	
+	public static void writeOntology(){
+		
+	}
+	
 	public static OWLOntology load(String path) throws OWLOntologyCreationException{
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		manager = OWLManager.createOWLOntologyManager();
 		return manager.loadOntologyFromOntologyDocument(new File(path));
 	}
 	

@@ -1,21 +1,18 @@
 package decio;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.semanticweb.HermiT.Reasoner;
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.io.StreamDocumentTarget;
-import org.semanticweb.owlapi.model.AddAxiom;
+import org.semanticweb.owlapi.io.OWLXMLOntologyFormat;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLObjectProperty;
-import org.semanticweb.owlapi.model.OWLObjectPropertyAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.model.OWLOntologyFormat;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
 
@@ -45,7 +42,7 @@ public class OntologyReasoner {
 	}
 
 	public Candidate winner() {
-		if(candidates.toArray().length > 0)
+		if (candidates.toArray().length > 0)
 			return (Candidate) candidates.toArray()[0];
 		return null;
 	}
@@ -123,27 +120,35 @@ public class OntologyReasoner {
 	}
 
 	public void learn(String name, String characteristic) {
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		IRI ontologyIRI = Main.Ontology.getOntologyID().getOntologyIRI();
 		OWLOntology ont = Main.Ontology;
-		OWLDataFactory factory = manager.getOWLDataFactory();
+		OWLDataFactory factory = OntologyHelper.manager.getOWLDataFactory();
 
-		OWLIndividual newIndividual = factory.getOWLNamedIndividual(IRI
+		OWLNamedIndividual newIndividual = factory.getOWLNamedIndividual(IRI
 				.create(ontologyIRI + "#" + name));
 
-		OWLObjectProperty assertion = factory.getOWLObjectProperty(IRI
-				.create(ontologyIRI + "#" + characteristic));
+		OWLClass owlClass = factory.getOWLClass(IRI.create(ontologyIRI + "#"
+				+ characteristic));
 
-		OWLObjectPropertyAssertionAxiom axiom1 = factory
-				.getOWLObjectPropertyAssertionAxiom(assertion, newIndividual, newIndividual);
+		OWLAxiom axiom = factory.getOWLClassAssertionAxiom(owlClass, newIndividual);
 
-		AddAxiom addAxiom1 = new AddAxiom(ont, axiom1);
-		// Now we apply the change using the manager.
-		manager.applyChange(addAxiom1);
-
-		System.out.println("RDF/XML: ");
+		OntologyHelper.manager.addAxiom(ont, axiom);
+		
 		try {
-			manager.saveOntology(ont, new StreamDocumentTarget(System.out));
+			OntologyHelper.manager.saveOntology(ont);
+		} catch (OWLOntologyStorageException e) {
+			System.out.println("Não consegui salvar a ontologia!");
+			e.printStackTrace();
+		}
+		File file = new File(Main.OntologyPath);
+		
+		OWLOntologyFormat format = OntologyHelper.manager.getOntologyFormat(ont);
+		OWLXMLOntologyFormat owlxmlFormat = new OWLXMLOntologyFormat();
+		if (format.isPrefixOWLOntologyFormat()) { 
+		  owlxmlFormat.copyPrefixesFrom(format.asPrefixOWLOntologyFormat()); 
+		}
+		try {
+			OntologyHelper.manager.saveOntology(ont, owlxmlFormat, IRI.create(file.toURI()));
 		} catch (OWLOntologyStorageException e) {
 			e.printStackTrace();
 		}
