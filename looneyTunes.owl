@@ -31,6 +31,9 @@
         <Class IRI="#Azarado"/>
     </Declaration>
     <Declaration>
+        <Class IRI="#Bebê"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Caçador"/>
     </Declaration>
     <Declaration>
@@ -136,6 +139,9 @@
         <NamedIndividual IRI="#Pernalonga"/>
     </Declaration>
     <Declaration>
+        <NamedIndividual IRI="#Pernalonga_baby"/>
+    </Declaration>
+    <Declaration>
         <NamedIndividual IRI="#Pink"/>
     </Declaration>
     <Declaration>
@@ -207,6 +213,9 @@
             <Class IRI="#Mau"/>
             <Class IRI="#Rato"/>
             <Class IRI="#TemIrmão"/>
+            <ObjectComplementOf>
+                <Class IRI="#Femea"/>
+            </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Cerebro"/>
     </ClassAssertion>
@@ -217,6 +226,9 @@
             <Class IRI="#Esperto"/>
             <Class IRI="#Mau"/>
             <Class IRI="#UsaArmas"/>
+            <ObjectComplementOf>
+                <Class IRI="#Femea"/>
+            </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Coyote"/>
     </ClassAssertion>
@@ -226,6 +238,9 @@
             <Class IRI="#Veloz"/>
             <ObjectComplementOf>
                 <Class IRI="#Esperto"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="#Femea"/>
             </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Diabo_da_Tasmânia"/>
@@ -331,6 +346,9 @@
                 <Class IRI="#Azarado"/>
             </ObjectComplementOf>
             <ObjectComplementOf>
+                <Class IRI="#Femea"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
                 <Class IRI="#Mau"/>
             </ObjectComplementOf>
         </ObjectIntersectionOf>
@@ -358,6 +376,7 @@
     <ClassAssertion>
         <ObjectIntersectionOf>
             <Class IRI="#Animal"/>
+            <Class IRI="#FalaErrado"/>
             <Class IRI="#Mulherengo"/>
             <ObjectComplementOf>
                 <Class IRI="#Femea"/>
@@ -380,6 +399,21 @@
             </ObjectComplementOf>
         </ObjectIntersectionOf>
         <NamedIndividual IRI="#Pernalonga"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <ObjectIntersectionOf>
+            <Class IRI="#Animal"/>
+            <Class IRI="#Bebê"/>
+            <Class IRI="#Esperto"/>
+            <Class IRI="#Ingênuo"/>
+            <ObjectComplementOf>
+                <Class IRI="#Azarado"/>
+            </ObjectComplementOf>
+            <ObjectComplementOf>
+                <Class IRI="#Mau"/>
+            </ObjectComplementOf>
+        </ObjectIntersectionOf>
+        <NamedIndividual IRI="#Pernalonga_baby"/>
     </ClassAssertion>
     <ClassAssertion>
         <ObjectIntersectionOf>
